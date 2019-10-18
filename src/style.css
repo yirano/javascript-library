@@ -1,0 +1,89 @@
+body {
+  height: 100vh;
+  background-color: rgba(245, 245, 245, 0.733);
+  font-family: 'Raleway',
+  sans-serif;
+}
+
+main {
+  position: relative;
+  top: 120px;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  margin-top: 1px;
+  padding: 6px 25px 15px;
+  border-left: 7px solid rgb(76, 0, 255);
+  box-shadow: 0px 10px 12px rgba(184, 184, 184, 0.5);
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-right-radius: 10px;
+}
+
+.card div {
+  padding: 20px 10px;
+}
+
+.title {
+  justify-self: start;
+  flex-basis: 35%;
+}
+
+.author {
+  flex-basis: 12%;
+}
+
+.rating {
+  flex-basis: 7%;
+}
+
+.date-added {
+  flex-basis: 15%;
+}
+
+.delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.status {
+  width: 90px;
+  padding: 10px 12px;
+}
+
+.hide {
+  /* display: none; */
+  animation: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.form-wrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+.form {
+  margin: 0 auto;
+  align-self: center;
+  padding: 100px;
+  background-color: #fff;
+  
+}
