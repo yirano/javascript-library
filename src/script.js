@@ -10,3 +10,11 @@ add.addEventListener('click', function (e) {
 form_submit.addEventListener('click', function () {
   form_wrapper.classList.add('hide');
 })
+
+let books_arr = [];
+
+let books = {
+  title: 'What If?',
+  author: 'Randall Munroe',
+  status: 'read'
+}
