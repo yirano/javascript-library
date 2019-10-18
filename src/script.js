@@ -7,7 +7,7 @@ let title = document.querySelector('.title');
 let author = document.querySelector('.author');
 let status = document.querySelector('.status');
 let cards = document.querySelector('.cards');
-let books_arr = [];
+let library = [];
 
 add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('hide');
@@ -16,6 +16,8 @@ add.addEventListener('click', function (e) {
 
 form_submit.addEventListener('click', function () {
   form_wrapper.classList.add('hide');
+  add_book();
+
 })
 
 delete_card.addEventListener('click', function () {
@@ -32,20 +34,30 @@ let add_book = function () {
   let new_title = document.getElementById('title').value;
   let new_author = document.getElementById('author').value;
   let new_book = new Books(new_title, new_author);
-  books_arr.push(new_book);
-  console.log(books_arr);
+  library.push(new_book);
+  update();
 }
 
-
-form_submit.addEventListener('click', add_book)
-
-
 let whatIf = new Books('What If?', 'Randall Munroe', 'Read')
-books_arr.push(whatIf);
+library.push(whatIf);
 
-console.log(books_arr);
-
-
-function test() {
-  let p = document.createElement('p');
+function update() {
+  for (book of library) {
+    let c = document.createElement('div');
+    let t = document.createElement('div');
+    let a = document.createElement('div');
+    let b = document.createElement('button');
+    c.classList.add('card');
+    t.classList.add('title');
+    a.classList.add('author');
+    b.classList.add('delete');
+    t.textContent = book.title;
+    a.textContent = book.author;
+    b.textContent = 'X'
+    c.appendChild(t);
+    c.appendChild(a);
+    c.appendChild(b);
+    cards.appendChild(c);
+  }
+  console.log(library);
 }

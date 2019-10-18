@@ -14,11 +14,6 @@ main {
   padding: 0;
 }
 
-h4 {
-  font-size: 18px;
-  font-weight: 500;
-}
-
 button {
   display: flex;
   margin: 0 auto;
@@ -54,6 +49,8 @@ button {
 .title {
   justify-self: start;
   flex-basis: 35%;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .author {
