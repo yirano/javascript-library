@@ -17,7 +17,7 @@ add.addEventListener('click', function (e) {
 form_submit.addEventListener('click', function () {
   form_wrapper.classList.add('hide');
   add_book();
-
+  display();
 })
 
 delete_card.addEventListener('click', function () {
@@ -35,22 +35,18 @@ let add_book = function () {
   let new_author = document.getElementById('author').value;
   let new_book = new Books(new_title, new_author);
   library.push(new_book);
-  update();
 }
 
-let whatIf = new Books('What If?', 'Randall Munroe', 'Read')
-library.push(whatIf);
-
-function update() {
+function display() {
+  let c = document.createElement('div');
+  let t = document.createElement('div');
+  let a = document.createElement('div');
+  let b = document.createElement('button');
+  c.classList.add('card');
+  t.classList.add('title');
+  a.classList.add('author');
+  b.classList.add('delete');
   for (book of library) {
-    let c = document.createElement('div');
-    let t = document.createElement('div');
-    let a = document.createElement('div');
-    let b = document.createElement('button');
-    c.classList.add('card');
-    t.classList.add('title');
-    a.classList.add('author');
-    b.classList.add('delete');
     t.textContent = book.title;
     a.textContent = book.author;
     b.textContent = 'X'
