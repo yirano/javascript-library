@@ -9,11 +9,12 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
   <main>
-    <div class="form-wrapper">
+    <div class="form-wrapper hide">
       <div class="form">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required minlength="3">
@@ -24,8 +25,11 @@
           <option value="read">Read</option>
           <option value="unread">To-Read</option>
         </select>
+        <button class="submit">Submit</button>
       </div>
     </div>
+
+    <button class="add">Add</button>
 
     <div class="card">
       <div class="title">
