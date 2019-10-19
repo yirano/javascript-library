@@ -85,6 +85,8 @@ function key_listener(e) {
         input.value = '';
       }
     }
+  } else if (e.key == 'Escape') {
+    form_wrapper.classList.add('hide');
   }
 }
 
@@ -135,7 +137,7 @@ add.addEventListener('click', function (e) {
 })
 
 
-form.addEventListener('keypress', key_listener)
+form.addEventListener('keydown', key_listener)
 
 form_submit.addEventListener('click', submit_form);
 
