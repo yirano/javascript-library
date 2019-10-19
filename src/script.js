@@ -118,6 +118,8 @@ function display() {
     s.appendChild(r);
     cards.appendChild(c);
   }
+  inputs[0].focus();
+  inputs[1].blur();
 }
 
 
