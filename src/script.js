@@ -1,5 +1,6 @@
 let add = document.querySelector('.add');
 let form_wrapper = document.querySelector('.form-wrapper')
+let form = document.querySelector('.form');
 let form_submit = document.querySelector('.submit')
 let delete_card = document.querySelector('.delete');
 let cards = document.querySelector('.cards');
@@ -77,10 +78,20 @@ add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('none');
 })
 
+form.addEventListener('keypress', function (e) {
+  if (e.key == 'Enter') {
+    if (inputs[0].value != '' && inputs[1].value != '') {
+      add_book();
+      display();
+      for (input of inputs) {
+        input.value = '';
+      }
+    }
+  }
+})
+
 form_submit.addEventListener('click', function () {
-  if (inputs[0].value == '' || inputs[1].value == '') {
-    return false;
-  } else {
+  if (inputs[0].value != '' && inputs[1].value != '') {
     add_book();
     display();
     for (input of inputs) {
