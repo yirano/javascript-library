@@ -8,26 +8,23 @@ let author = document.querySelector('.author');
 let status = document.querySelector('.status');
 let cards = document.querySelector('.cards');
 let library = [];
+let id_stat = 0;
 
-add.addEventListener('click', function (e) {
-  form_wrapper.classList.remove('hide');
-  console.log(e);
-})
-
-form_submit.addEventListener('click', function () {
-  form_wrapper.classList.add('hide');
-  add_book();
-  display();
-})
-
-delete_card.addEventListener('click', function () {
-  card.classList.add('hide')
-})
+let del = function (e) {
+  document.getElementById(e.target.value).remove();
+  console.log(e.target.value);
+  for (let i = 0; i < library.length; i++) {
+    if (library[i].id_num == e.target.value) {
+      library.splice(i, 1);
+    }
+  }
+}
 
 let Books = function (title, author, status) {
   this.title = title;
   this.author = author;
   this.status = status;
+  this.id_num = id_stat += 1;
 }
 
 let add_book = function () {
@@ -38,6 +35,7 @@ let add_book = function () {
 }
 
 function display() {
+  let id_number = 0;
   let c = document.createElement('div');
   let t = document.createElement('div');
   let a = document.createElement('div');
@@ -46,14 +44,30 @@ function display() {
   t.classList.add('title');
   a.classList.add('author');
   b.classList.add('delete');
+  b.addEventListener('click', del);
   for (book of library) {
     t.textContent = book.title;
     a.textContent = book.author;
     b.textContent = 'X'
+    b.value = id_stat;
+    c.id = id_stat;
     c.appendChild(t);
     c.appendChild(a);
     c.appendChild(b);
     cards.appendChild(c);
   }
-  console.log(library);
 }
+
+add.addEventListener('click', function (e) {
+  form_wrapper.classList.remove('hide');
+})
+
+form_submit.addEventListener('click', function () {
+  form_wrapper.classList.add('hide');
+  add_book();
+  display();
+})
+
+delete_card.addEventListener('click', del)
+
+display();
