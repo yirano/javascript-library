@@ -7,15 +7,20 @@ let close = document.querySelector('.close');
 let inputs = document.querySelectorAll('input')
 let library = [];
 let id_stat = 0;
+let evt_fired = false;
 
-let del = function (e) {
+function del(e) {
   document.getElementById(e.target.value).remove();
-  console.log(e.target.value);
   for (let i = 0; i < library.length; i++) {
     if (library[i].id_num == e.target.value) {
       library.splice(i, 1);
     }
   }
+}
+
+function drop(e) {
+  document.getElementById(e.target.value).classList.add('drop');
+  evt_fired = true;
 }
 
 let Books = function (title, author, status) {
@@ -42,7 +47,14 @@ function display() {
   t.classList.add('title');
   a.classList.add('author');
   b.classList.add('delete');
-  b.addEventListener('click', del);
+  b.addEventListener('click', function (e) {
+    drop(e)
+    setTimeout(function () {
+      if (evt_fired == true) {
+        del(e);
+      }
+    }, 180)
+  });
   for (book of library) {
     t.textContent = book.title;
     a.textContent = book.author;
@@ -62,6 +74,7 @@ close.addEventListener('click', function () {
 
 add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('hide');
+  form_wrapper.classList.remove('none');
 })
 
 form_submit.addEventListener('click', function () {
@@ -76,6 +89,13 @@ form_submit.addEventListener('click', function () {
   }
 })
 
-delete_card.addEventListener('click', del)
+delete_card.addEventListener('click', function (e) {
+  drop(e)
+  setTimeout(function () {
+    if (evt_fired == true) {
+      del(e);
+    }
+  }, 180)
+})
 
 // display();
