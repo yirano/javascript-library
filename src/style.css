@@ -35,7 +35,7 @@
 
 body {
   height: 100vh;
-  background-color: rgba(245, 245, 245, 0.733);
+  background-color: rgba(255, 255, 255, 0.733);
   font-family: 'Raleway',
   sans-serif;
 }
@@ -112,13 +112,33 @@ button {
 }
 
 .bar-title {
-  flex-basis: 66%;
+  flex-basis: 56%;
+}
+
+.bar-status {
+  flex-basis: 12%;
 }
 
 .title {
-  flex-basis: 66%;
+  flex-basis: 56%;
   font-size: 18px;
   font-weight: 500;
+}
+
+.status {
+  flex-basis: 12%;
+}
+
+.status button {
+  margin-left: -10px;
+  width: 100px;
+  color: rgb(82, 82, 82);
+  background-color: rgb(233, 216, 62);
+}
+
+.status button.read {
+  background-color: green;
+  color: #fff;
 }
 
 .author {
