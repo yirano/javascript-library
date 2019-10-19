@@ -3,6 +3,8 @@ let form_wrapper = document.querySelector('.form-wrapper')
 let form_submit = document.querySelector('.submit')
 let delete_card = document.querySelector('.delete');
 let cards = document.querySelector('.cards');
+let close = document.querySelector('.close');
+let inputs = document.querySelectorAll('input')
 let library = [];
 let id_stat = 0;
 
@@ -54,16 +56,26 @@ function display() {
   }
 }
 
+close.addEventListener('click', function () {
+  form_wrapper.classList.add('hide');
+})
+
 add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('hide');
 })
 
 form_submit.addEventListener('click', function () {
-  form_wrapper.classList.add('hide');
-  add_book();
-  display();
+  if (inputs[0].value == '' || inputs[1].value == '') {
+    return false;
+  } else {
+    add_book();
+    display();
+    for (input of inputs) {
+      input.value = '';
+    }
+  }
 })
 
 delete_card.addEventListener('click', del)
 
-display();
+// display();
