@@ -75,6 +75,10 @@ button {
   border-radius: 10px;
 }
 
+button:focus {
+  outline: none;
+}
+
 .card {
   position: relative;
   display: flex;

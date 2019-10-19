@@ -33,11 +33,29 @@ function drop(e) {
   evt_fired = true;
 }
 
+function animate_drop(e) {
+  drop(e)
+  setTimeout(function () {
+    if (evt_fired == true) {
+      del(e);
+    }
+  }, 180)
+}
+
 function add_book() {
   let new_title = document.getElementById('title').value;
   let new_author = document.getElementById('author').value;
   let new_book = new Books(new_title, new_author);
   library.push(new_book);
+}
+
+function read_status() {
+  this.classList.toggle('read');
+  if (this.classList.contains('read')) {
+    this.textContent = 'Read';
+  } else {
+    this.textContent = 'To Read';
+  }
 }
 
 // function read_status() {
@@ -58,6 +76,18 @@ function submit_form() {
   }
 }
 
+function key_listener(e) {
+  if (e.key == 'Enter') {
+    if (inputs[0].value != '' && inputs[1].value != '') {
+      add_book();
+      display();
+      for (input of inputs) {
+        input.value = '';
+      }
+    }
+  }
+}
+
 function display() {
   let id_number = 0;
   let c = document.createElement('div');
@@ -73,22 +103,8 @@ function display() {
   r.textContent = 'Read';
   a.classList.add('author');
   b.classList.add('delete');
-  r.addEventListener('click', function (e) {
-    e.target.classList.toggle('read');
-    if (e.target.classList.contains('read')) {
-      e.target.textContent = 'Read';
-    } else {
-      e.target.textContent = 'To Read';
-    }
-  })
-  b.addEventListener('click', function (e) {
-    drop(e)
-    setTimeout(function () {
-      if (evt_fired == true) {
-        del(e);
-      }
-    }, 180)
-  });
+  r.addEventListener('click', read_status)
+  b.addEventListener('click', animate_drop);
   for (book of library) {
     t.textContent = book.title;
     a.textContent = book.author;
@@ -104,14 +120,8 @@ function display() {
   }
 }
 
-status.addEventListener('click', function (e) {
-  e.target.classList.toggle('read');
-  if (e.target.classList.contains('read')) {
-    e.target.textContent = 'Read';
-  } else {
-    e.target.textContent = 'To Read';
-  }
-})
+
+status.addEventListener('click', read_status)
 
 close.addEventListener('click', function () {
   form_wrapper.classList.add('hide');
@@ -122,27 +132,11 @@ add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('none');
 })
 
-form.addEventListener('keypress', function (e) {
-  if (e.key == 'Enter') {
-    if (inputs[0].value != '' && inputs[1].value != '') {
-      add_book();
-      display();
-      for (input of inputs) {
-        input.value = '';
-      }
-    }
-  }
-})
+
+form.addEventListener('keypress', key_listener)
 
 form_submit.addEventListener('click', submit_form);
 
-delete_card.addEventListener('click', function (e) {
-  drop(e)
-  setTimeout(function () {
-    if (evt_fired == true) {
-      del(e);
-    }
-  }, 180)
-})
+delete_card.addEventListener('click', animate_drop)
 
 // display();
