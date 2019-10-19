@@ -1,6 +1,7 @@
 # Library
 
 ## Introduction
+A basic Library app where you can add and remove books you have or want to read. 
 
 ## Built With
 HTML/CSS
@@ -8,6 +9,7 @@ HTML/CSS
 
 ## Project Page
 [The Odin Project - Library](https://www.theodinproject.com/courses/javascript/lessons/library)
+[Live Page](https://yirano.github.io/javascript-library/src/)
 
 ## License
 Distributed under the MIT License. 
