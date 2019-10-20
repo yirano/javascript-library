@@ -124,7 +124,6 @@ function display() {
   inputs[1].blur();
 }
 
-
 status.addEventListener('click', read_status)
 
 close.addEventListener('click', function () {
@@ -136,11 +135,8 @@ add.addEventListener('click', function (e) {
   form_wrapper.classList.remove('none');
 })
 
-
 form.addEventListener('keydown', key_listener)
 
 form_submit.addEventListener('click', submit_form);
 
 delete_card.addEventListener('click', animate_drop)
-
-// display();
